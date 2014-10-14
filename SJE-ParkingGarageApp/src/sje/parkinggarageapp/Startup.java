@@ -1,7 +1,7 @@
 package sje.parkinggarageapp;
 
-import java.text.NumberFormat;
-import java.util.Arrays;
+//import java.text.NumberFormat;
+//import java.util.Arrays;
 
 /**
  * Just a start and test class for this program. You may modify this class in
@@ -21,13 +21,13 @@ public class Startup {
 
         Garage bestGarage = new Garage("Best Value Parking Garage",
                 "Plankinton Street", "Milwaukee Wi", "53111");
-        FeeStrategy bestStrategy = new BestValueFeeCalculator();
+        FeeStrategy bestStrategy = new BestValueFeeCalculator(2,3,10,24,.50);
         // Customer customer = db.getCustomerByID(1); //new Customer(1,"Endres" );
 
 //        ATM atm1 = new ATM(garage);
         ATM atm1 = new ATM(bestGarage, bestStrategy);
         //  atm1.newReceipt();
-        FeeStrategy feeStrategy = new ThriftyFeeCalculator();
+      //  FeeStrategy feeStrategy = new ThriftyFeeCalculator(1.5, 2, 0.75);
        // Store store, int custId, DataAccessStrategy db
 //        atm1.addSale(fd.getProductByID("A"), 100);
         //      public void addSale(String prodId, int qty, DataAccessStrategy db){
@@ -49,7 +49,7 @@ public class Startup {
         Garage thriftyGarage = new Garage("Thrifty",
                 "Main Street", "Milwaukee Wi", "53112");
         //   Customer c2 = db.getCustomerByID(2); //new Customer(1,"Endres" );
-        FeeStrategy thriftyStrategy = new ThriftyFeeCalculator();
+        FeeStrategy thriftyStrategy = new ThriftyFeeCalculator(1.5,2.0,.75);
 
         ATM atm2 = new ATM(thriftyGarage, thriftyStrategy);
         //  atm2.newReceipt();

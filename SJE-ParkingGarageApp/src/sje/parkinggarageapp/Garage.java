@@ -1,33 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sje.parkinggarageapp;
 
 /**
- ** Store concrete class instantiates a store
+ ** Garage concrete class instantiates a garage
  *
  * @author sendres1
  * @version 1.20
  */
 public class Garage {
-
     private String garageName;
     private String address1;
     private String cityState;
     private String zipcode;
 
-    //default constructor
-    public Garage() {
-    }
-
     // constructor
     public Garage(String garageName, String address1, String cityState, String zipcode) {
-        this.garageName = garageName;
-        this.address1 = address1;
-        this.cityState = cityState;
-        this.zipcode = zipcode;
+      //  this.garageName = garageName;
+        setGarageName(garageName);
+        setAddress1(address1);
+        setCityState(cityState);
+        setZipcode(zipcode);
     }
 
     //getters
@@ -49,18 +40,30 @@ public class Garage {
 
     //setters
     public void setGarageName(String garageName) {
+        if (garageName == null || garageName.isEmpty()) {
+            throw new IllegalArgumentException("Garage Name is invalid!");
+        }
         this.garageName = garageName;
     }
 
     public void setAddress1(String address1) {
+        if (address1 == null || address1.isEmpty()) {
+             throw new IllegalArgumentException("Address1 is invalid!");
+        }
         this.address1 = address1;
     }
 
     public void setCityState(String cityState) {
+        if (cityState == null || cityState.isEmpty()) {
+             throw new IllegalArgumentException("City, State is invalid!");
+        }
         this.cityState = cityState;
     }
 
     public void setZipcode(String zipcode) {
+        if (zipcode == null || zipcode.isEmpty()) {
+             throw new IllegalArgumentException("Zip Code is invalid!");
+        }
         this.zipcode = zipcode;
     }
 

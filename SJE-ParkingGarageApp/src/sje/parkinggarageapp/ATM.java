@@ -16,7 +16,7 @@ public class ATM {
 
     private Garage garage;
     private Receipt receipt;
-    private Ticket ticket;
+ //   private Ticket ticket;
     private FeeStrategy feeStrategy;
     // make these static
     private double totalHours;
