@@ -1,7 +1,5 @@
 package sje.parkinggarageapp;
 
-//import java.text.NumberFormat;
-//import java.util.Arrays;
 
 /**
  * Just a start and test class for this program. You may modify this class in
@@ -16,59 +14,61 @@ public class Startup {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //DataAccessStrategy db = new FakeDatabase();
-
+        
         Garage bestGarage = new Garage("Best Value Parking Garage",
                 "Plankinton Street", "Milwaukee Wi", "53111");
         FeeStrategy bestStrategy = new BestValueFeeCalculator(2,3,10,24,.50);
-        // Customer customer = db.getCustomerByID(1); //new Customer(1,"Endres" );
-
-//        ATM atm1 = new ATM(garage);
-        ATM atm1 = new ATM(bestGarage, bestStrategy);
-        //  atm1.newReceipt();
-      //  FeeStrategy feeStrategy = new ThriftyFeeCalculator(1.5, 2, 0.75);
-       // Store store, int custId, DataAccessStrategy db
-//        atm1.addSale(fd.getProductByID("A"), 100);
-        //      public void addSale(String prodId, int qty, DataAccessStrategy db){
-
-        atm1.addSale(.5);
-        atm1.addSale(2.01);
-        atm1.addSale(3.00);
-        atm1.addSale(3.01);
-        atm1.addSale(3.5);
-        atm1.addSale(3.99);
-        atm1.addSale(4.0);
-        atm1.addSale(6.00);
-        atm1.addSale(16.00);
-        atm1.addSale(16.5);
-        atm1.addSale(17.0);
-        atm1.addSale(19.00);
-        atm1.addSale(19.50);
-
+        
+        ATM atmOut = new ATM(bestGarage, bestStrategy);
+       
+        Car car1 = new Car();
+        car1.carArrives(.5);
+        atmOut.carLeaves(car1);
+        Car car2 = new Car();
+        car2.carArrives(2.00);
+        atmOut.carLeaves(car2);
+        Car car3 = new Car();
+        car3.carArrives(3.00);
+        atmOut.carLeaves(car3);
+        Car car4 = new Car();
+        car4.carArrives(4.50);
+        atmOut.carLeaves(car4);
+        Car car5 = new Car();
+        car5.carArrives(19.00);
+        atmOut.carLeaves(car5);
+        Car car6 = new Car();
+        car6.carArrives(19.75);
+        atmOut.carLeaves(car6);
+        
+  
+        
+        
         Garage thriftyGarage = new Garage("Thrifty",
                 "Main Street", "Milwaukee Wi", "53112");
-        //   Customer c2 = db.getCustomerByID(2); //new Customer(1,"Endres" );
+        
         FeeStrategy thriftyStrategy = new ThriftyFeeCalculator(1.5,2.0,.75);
 
-        ATM atm2 = new ATM(thriftyGarage, thriftyStrategy);
-        //  atm2.newReceipt();
-        atm2.addSale(.5);
-        atm2.addSale(1.5);
-        atm2.addSale(2.0);
-        atm2.addSale(2.01);
-        atm2.addSale(3.00);
-        atm2.addSale(3.01);
-        atm2.addSale(3.5);
-        atm2.addSale(3.99);
-        atm2.addSale(4.0);
-        atm2.addSale(6.00);
-        atm2.addSale(16.00);
-        atm2.addSale(16.5);
-        atm2.addSale(17.0);
-        atm2.addSale(19.00);
-        atm2.addSale(19.50);
-
+        ATM atmOut2 = new ATM(thriftyGarage, thriftyStrategy);
+        
+        Car car1t = new Car();
+        car1t.carArrives(.5);
+        atmOut2.carLeaves(car1t);
+        Car car2t = new Car();
+        car2t.carArrives(2.00);
+        atmOut2.carLeaves(car2t);
+        Car car3t = new Car();
+        car3t.carArrives(3.00);
+        atmOut2.carLeaves(car3t);
+        Car car4t = new Car();
+        car4t.carArrives(4.50);
+        atmOut2.carLeaves(car4t);
+        Car car5t = new Car();
+        car5t.carArrives(19.00);
+        atmOut2.carLeaves(car5t);
+        Car car6t = new Car();
+        car6t.carArrives(19.75);
+        atmOut2.carLeaves(car6t);
+        
     }
 
 }

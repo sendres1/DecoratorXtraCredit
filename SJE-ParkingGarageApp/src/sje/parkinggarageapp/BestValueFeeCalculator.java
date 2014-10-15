@@ -92,10 +92,10 @@ public class BestValueFeeCalculator implements FeeStrategy {
 
     /**
      *
-     * @param minHours set the minumum hours charged
+     * @param minHours set the minimum hours charged
      */
     public final void setMinHours(double minHours) {
-        if (minHours < 0 || minHours > 500) {
+        if (minHours < 0 || minHours > 5) {
             throw new IllegalArgumentException("Minimum Hours invalid.");
         }
         this.minHours = minHours;

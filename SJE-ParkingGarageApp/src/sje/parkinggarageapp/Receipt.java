@@ -6,6 +6,7 @@
 package sje.parkinggarageapp;
 
 import java.text.NumberFormat;
+import java.text.DecimalFormat;
 
 /**
  ** Product class has methods necessary to process a product for sale
@@ -15,97 +16,57 @@ import java.text.NumberFormat;
  */
 public class Receipt {
 
+    private double totalHours;
+    private double totalFee;
     private double hours;
-    // private double discountAmt;
     private Garage garage;
     private FeeStrategy strategy;
     private double fee;
 
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-    // NumberFormat hourFormat = NumberFormat.getNumberInstance(0#.##);
+    DecimalFormat decimalFormat = new DecimalFormat("####0.00");
 
     public Receipt(FeeStrategy strategy, Garage garage) {
-        //      this.hours = hours;
-        hours = 0;
-//        this.productId = productId;
-//        this.productDesc = productDesc;
+        totalHours = 0;
+        totalFee = 0;
         this.garage = garage;
         this.strategy = strategy;
-        this.fee = 0;
-
     }
-//
-    //   public double getUnitPrice() {
-    //       return unitPrice;
-    //   }
-
- //   public String getProductId() {
-    //       return productId;
-    //   }
- //   public String getProductDesc() {
-    //       return productDesc;
-    //   }
-    public double getFeeAmt(double hours) {
-        //????????????????????????
-        return strategy.calcFeeAmt(hours);
-        // this.hours = strategy.calcFeeAmt(hours)
-    }
-
-    public void addSale(double hours) {
+    public final void processCar(Car car){
+        this.hours = car.getTicket().getHours();
+        addSale();
+                }
+    public final void addSale() {
+        totalHours += hours;
+      //  this.hours = hours;
         fee = getFeeAmt(hours);
-        this.hours = hours;
+        totalFee += fee;
         printReceipt();
     }
 
-    public void printReceipt() {
-        // Just utility code to format numbers nice.
-
-        printSale();
-        printGarageTotals();
-  //
-        //      printSale();
-        //      printThanks();
+    private double getFeeAmt(double hours) {
+        return strategy.calcFeeAmt(hours);
 
     }
 
-//    private void printCustomer() {
-//        System.out.println("  Client:  " + this.customer.getCustomerName());
-//    }
+    private void printReceipt() {
+        printSale();
+        printGarageTotals();
+
+    }
+
     private void printGarageTotals() {
-   //     System.out.println();
-        //     System.out.println();
-        //      System.out.println();
-        //      System.out.println("Garage: " + this.garage.getGarageDesc());
         System.out.println("Running total for: "
                 + garage.getGarageName()
-                + " is  " + hours + " hours parked, "
-                + currencyFormat.format(fee) + " collected.");
+                + " is  " + (decimalFormat.format(totalHours)) + " hours parked, "
+                + currencyFormat.format(totalFee) + " collected.");
         System.out.println();
-//       System.out.println("        " +  garage.getCityState());
-        //       System.out.println("        " +  garage.getZipcode());
 
     }
 
     private void printSale() {
-//        for (int i = 0; i < sales.length; i++) {
         System.out.println(garage.getGarageName()
                 + ",  " + hours + " hours parked, "
                 + currencyFormat.format(fee) + " fee.");
     }
-//    }
-
-//    private void printThanks() {
-//        System.out.println("   THANKS ");
-//    }
-  //  public void setUnitPrice(double unitPrice) {
-    //      this.unitPrice = unitPrice;
-    //  }
-//    public void setProductId(String productId) {
-//        this.productId = productId;
-    //  }
-//
-//    public void setProductDesc(String productDesc) {
-//        this.productDesc = productDesc;
-//    }
-//    
 }
