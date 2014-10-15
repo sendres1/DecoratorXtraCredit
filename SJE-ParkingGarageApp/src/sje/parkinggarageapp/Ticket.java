@@ -17,8 +17,15 @@ public class Ticket {
         this.hours = hours;
     }
 
-    public double getHours() {
+    public final double getHours() {
         return hours;
+    }
+
+    public final void setHours(double hours) {
+         if (hours < 0 || hours > 24) {
+            throw new IllegalArgumentException("Hours can't be more than 24.");
+        }
+        this.hours = hours;
     }
 
   
