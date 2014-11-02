@@ -13,6 +13,9 @@ public class ThriftyFeeCalculator implements FeeStrategy {
     private double minFee = 1.50;
     private double minHours = 2.0;
     private double hourlyFee = 0.75;
+    private double maxMinHours = 8;     //minimum hours maximum
+    private double maxFeeAmount = 5000; //can't charge over 5000
+    private double maxHourlyFee = 500;  //can't charge over 500 hr
     private final int ONE_HOUR = 1;
 
     /**
@@ -59,7 +62,7 @@ public class ThriftyFeeCalculator implements FeeStrategy {
      * @param minFee set the minimum fee
      */
     public final void setMinFee(double minFee) {
-        if (minFee < 0 || minFee > 5000) {
+        if (minFee < 0 || minFee > maxFeeAmount) {
             throw new IllegalArgumentException("Minimum Fee invalid.");
         }
         this.minFee = minFee;
@@ -67,10 +70,10 @@ public class ThriftyFeeCalculator implements FeeStrategy {
 
     /**
      *
-     * @param minHours set the minumum hours charged
+     * @param minHours set the minimum hours charged
      */
     public final void setMinHours(double minHours) {
-        if (minHours < 0 || minHours > 500) {
+        if (minHours < 0 || minHours > maxMinHours) {
             throw new IllegalArgumentException("Minimum Hours invalid.");
         }
         this.minHours = minHours;
@@ -82,7 +85,7 @@ public class ThriftyFeeCalculator implements FeeStrategy {
      * @param hourlyFee
      */
     public final void setHourlyFee(double hourlyFee) {
-        if (hourlyFee < 0 || hourlyFee > 500) {
+        if (hourlyFee < 0 || hourlyFee > maxHourlyFee) {
             throw new IllegalArgumentException("Hourly Fee invalid.");
         }
 

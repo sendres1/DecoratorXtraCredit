@@ -17,7 +17,11 @@ public class BestValueFeeCalculator implements FeeStrategy {
     private double maxFee = 10.00;
     private double maxHours = 24;
     private double hourlyFee = 0.50;
+    private double maxMinHours = 8;     //minimum hours maximum
+    private double maxFeeAmount = 5000; //can't charge over 5000
+    private double maxHourlyFee = 500;  //can't charge over 500 hr
     private final int ONE_HOUR = 1;
+    private final int MAX_HOURS_IN_DAY = 24;
 
     /**
      * Custom constructor. This is better because we guarantee property
@@ -84,7 +88,7 @@ public class BestValueFeeCalculator implements FeeStrategy {
      * @param minFee set the minimum fee
      */
     public final void setMinFee(double minFee) {
-        if (minFee < 0 || minFee > 5000) {
+        if (minFee < 0 || minFee > maxFeeAmount) {
             throw new IllegalArgumentException("Minimum Fee invalid.");
         }
         this.minFee = minFee;
@@ -95,7 +99,7 @@ public class BestValueFeeCalculator implements FeeStrategy {
      * @param minHours set the minimum hours charged
      */
     public final void setMinHours(double minHours) {
-        if (minHours < 0 || minHours > 5) {
+        if (minHours < 0 || minHours > maxMinHours) {
             throw new IllegalArgumentException("Minimum Hours invalid.");
         }
         this.minHours = minHours;
@@ -106,7 +110,7 @@ public class BestValueFeeCalculator implements FeeStrategy {
      * @param maxFee set the maximum fee charged
      */
     public final void setMaxFee(double maxFee) {
-        if (maxFee < 0 || maxFee > 5000) {
+        if (maxFee < 0 || maxFee > maxFeeAmount) {
             throw new IllegalArgumentException("Max Fee invalid.");
         }
 
@@ -118,7 +122,7 @@ public class BestValueFeeCalculator implements FeeStrategy {
      * @param maxHours set the maximum hours charged
      */
     public final void setMaxHours(double maxHours) {
-        if (maxHours < 0 || maxHours > 24) {
+        if (maxHours < 0 || maxHours > MAX_HOURS_IN_DAY) {
             throw new IllegalArgumentException("Max Hours invalid.");
         }
 
@@ -131,7 +135,7 @@ public class BestValueFeeCalculator implements FeeStrategy {
      * @param hourlyFee
      */
     public final void setHourlyFee(double hourlyFee) {
-        if (hourlyFee < 0 || hourlyFee > 500) {
+        if (hourlyFee < 0 || hourlyFee > maxHourlyFee) {
             throw new IllegalArgumentException("Hourly Fee invalid.");
         }
 
