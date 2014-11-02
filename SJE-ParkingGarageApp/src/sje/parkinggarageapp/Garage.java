@@ -7,6 +7,7 @@ package sje.parkinggarageapp;
  * @version 1.20
  */
 public class Garage {
+
     private String garageName;
     private String address1;
     private String cityState;
@@ -47,21 +48,21 @@ public class Garage {
 
     public final void setAddress1(String address1) {
         if (address1 == null || address1.isEmpty()) {
-             throw new IllegalArgumentException("Address1 is invalid!");
+            throw new IllegalArgumentException("Address1 is invalid!");
         }
         this.address1 = address1;
     }
 
     public final void setCityState(String cityState) {
         if (cityState == null || cityState.isEmpty()) {
-             throw new IllegalArgumentException("City, State is invalid!");
+            throw new IllegalArgumentException("City, State is invalid!");
         }
         this.cityState = cityState;
     }
 
     public final void setZipcode(String zipcode) {
         if (zipcode == null || zipcode.isEmpty()) {
-             throw new IllegalArgumentException("Zip Code is invalid!");
+            throw new IllegalArgumentException("Zip Code is invalid!");
         }
         this.zipcode = zipcode;
     }

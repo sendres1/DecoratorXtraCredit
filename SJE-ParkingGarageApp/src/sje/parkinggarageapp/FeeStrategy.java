@@ -7,5 +7,6 @@ package sje.parkinggarageapp;
  * @version 1.15
  */
 public interface FeeStrategy {
+
     public abstract double calcFeeAmt(double hour);
 }

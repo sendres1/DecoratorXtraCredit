@@ -18,10 +18,10 @@ public class ATM {
     private Car car;
     private Receipt receipt;
     private FeeStrategy feeStrategy;
-   
+
     public ATM(Garage garage, FeeStrategy feeStrategy) {
         this.receipt = new Receipt(feeStrategy, garage);
-      
+
         this.garage = garage;
         this.feeStrategy = feeStrategy;
     }
@@ -29,7 +29,6 @@ public class ATM {
     public final void carLeaves(Car car) {
         receipt.processCar(car);
         //receipt.addSale(hours);
-        
+
     }
 }
-  

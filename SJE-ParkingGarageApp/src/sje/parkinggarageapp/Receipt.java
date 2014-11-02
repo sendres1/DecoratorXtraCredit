@@ -32,13 +32,15 @@ public class Receipt {
         this.garage = garage;
         this.strategy = strategy;
     }
-    public final void processCar(Car car){
+
+    public final void processCar(Car car) {
         this.hours = car.getTicket().getHours();
         addSale();
-                }
+    }
+
     public final void addSale() {
         totalHours += hours;
-      //  this.hours = hours;
+        //  this.hours = hours;
         fee = getFeeAmt(hours);
         totalFee += fee;
         printReceipt();
@@ -55,6 +57,12 @@ public class Receipt {
 
     }
 
+    private void printSale() {
+        System.out.println(garage.getGarageName()
+                + ",  " + hours + " hours parked, "
+                + currencyFormat.format(fee) + " fee.");
+    }
+
     private void printGarageTotals() {
         System.out.println("Running total for: "
                 + garage.getGarageName()
@@ -64,9 +72,4 @@ public class Receipt {
 
     }
 
-    private void printSale() {
-        System.out.println(garage.getGarageName()
-                + ",  " + hours + " hours parked, "
-                + currencyFormat.format(fee) + " fee.");
-    }
 }

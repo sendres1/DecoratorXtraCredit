@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sje.parkinggarageapp;
 
 /**
@@ -11,8 +10,9 @@ package sje.parkinggarageapp;
  * @author Owner
  */
 public class Ticket {
-       private double hours;
-       private final int MAX_HOURS_IN_DAY = 24;
+
+    private double hours;
+    private final int MAX_HOURS_IN_DAY = 24;
 
     public Ticket(double hours) {
         this.hours = hours;
@@ -23,15 +23,10 @@ public class Ticket {
     }
 
     public final void setHours(double hours) {
-         if (hours < 0 || hours > MAX_HOURS_IN_DAY) {
+        if (hours < 0 || hours > MAX_HOURS_IN_DAY) {
             throw new IllegalArgumentException("Hours can't be more than 24.");
         }
         this.hours = hours;
     }
 
-  
-               
-               
-               
-               
-               }
+}

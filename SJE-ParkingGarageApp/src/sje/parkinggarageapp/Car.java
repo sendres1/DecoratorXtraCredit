@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sje.parkinggarageapp;
 
 /**
@@ -11,24 +10,19 @@ package sje.parkinggarageapp;
  * @author Owner
  */
 public class Car {
-    private Ticket ticket; 
-    
+
+    private Ticket ticket;
+
     public Car() {
-    
+
     }
- 
-    public void carArrives(double hours ){
+
+    public void carArrives(double hours) {
         this.ticket = new Ticket(hours);
-            }
+    }
 
     public Ticket getTicket() {
         return ticket;
     }
-    
-    
-    
- 
-    
-    
-    
+
 }

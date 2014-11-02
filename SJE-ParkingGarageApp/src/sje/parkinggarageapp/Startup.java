@@ -1,6 +1,5 @@
 package sje.parkinggarageapp;
 
-
 /**
  * Just a start and test class for this program. You may modify this class in
  * any way you see fit.
@@ -14,13 +13,13 @@ public class Startup {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         Garage bestGarage = new Garage("Best Value Parking Garage",
                 "Plankinton Street", "Milwaukee Wi", "53111");
-        FeeStrategy bestStrategy = new BestValueFeeCalculator(2,3,10,24,.50);
-        
+        FeeStrategy bestStrategy = new BestValueFeeCalculator(2, 3, 10, 24, .50);
+
         ATM atmOut = new ATM(bestGarage, bestStrategy);
-       
+
         Car car1 = new Car();
         car1.carArrives(.5);
         atmOut.carLeaves(car1);
@@ -39,17 +38,14 @@ public class Startup {
         Car car6 = new Car();
         car6.carArrives(19.75);
         atmOut.carLeaves(car6);
-        
-  
-        
-        
+
         Garage thriftyGarage = new Garage("Thrifty",
                 "Main Street", "Milwaukee Wi", "53112");
-        
-        FeeStrategy thriftyStrategy = new ThriftyFeeCalculator(1.5,2.0,.75);
+
+        FeeStrategy thriftyStrategy = new ThriftyFeeCalculator(1.5, 2.0, .75);
 
         ATM atmOut2 = new ATM(thriftyGarage, thriftyStrategy);
-        
+
         Car car1t = new Car();
         car1t.carArrives(.5);
         atmOut2.carLeaves(car1t);
@@ -68,7 +64,7 @@ public class Startup {
         Car car6t = new Car();
         car6t.carArrives(19.75);
         atmOut2.carLeaves(car6t);
-        
+
     }
 
 }
