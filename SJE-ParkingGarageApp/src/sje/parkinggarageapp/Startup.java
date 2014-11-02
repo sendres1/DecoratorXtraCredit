@@ -17,9 +17,9 @@ public class Startup {
         Garage bestGarage = new Garage("Best Value Parking Garage",
                 "Plankinton Street", "Milwaukee Wi", "53111");
         FeeStrategy bestStrategy = new BestValueFeeCalculator(2, 3, 10, 24, .50);
-        ReceiptOutputStrategy consoleReciept = new ConsoleReceiptOutput();
+        ReceiptOutputStrategy consoleReceipt = new ConsoleReceiptOutput(bestGarage.getGarageName());
         
-        ATM atmOut = new ATM(bestGarage, bestStrategy);
+        ATM atmOut = new ATM(bestGarage, bestStrategy, consoleReceipt);
 
         Car car1 = new Car();
         car1.carArrives(.5);
@@ -44,8 +44,8 @@ public class Startup {
                 "Main Street", "Milwaukee Wi", "53112");
 
         FeeStrategy thriftyStrategy = new ThriftyFeeCalculator(1.5, 2.0, .75);
-
-        ATM atmOut2 = new ATM(thriftyGarage, thriftyStrategy);
+ReceiptOutputStrategy guiReceipt = new GuiReceiptOutput(thriftyGarage.getGarageName());
+        ATM atmOut2 = new ATM(thriftyGarage, thriftyStrategy, guiReceipt);
 
         Car car1t = new Car();
         car1t.carArrives(.5);

@@ -21,16 +21,19 @@ public class Receipt {
     private double hours;
     private Garage garage;
     private FeeStrategy strategy;
+    private ReceiptOutputStrategy receiptOutputStrategy;
     private double fee;
 
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
     DecimalFormat decimalFormat = new DecimalFormat("####0.00");
 
-    public Receipt(FeeStrategy strategy, Garage garage) {
+    public Receipt(FeeStrategy strategy, Garage garage,
+            ReceiptOutputStrategy receiptOutputStrategy) {
         totalHours = 0;
         totalFee = 0;
         this.garage = garage;
         this.strategy = strategy;
+        this.receiptOutputStrategy = receiptOutputStrategy;
     }
 
     public final void processCar(Car car) {
@@ -59,13 +62,14 @@ public class Receipt {
 
     private void printSale() {
         String line;
-//        System.out.println(garage.getGarageName()
-//                + ",  " + hours + " hours parked, "
-//                + currencyFormat.format(fee) + " fee.");
-         line =(garage.getGarageName()
+        System.out.println(garage.getGarageName()
                 + ",  " + hours + " hours parked, "
                 + currencyFormat.format(fee) + " fee.");
-         writeReceipt(line);
+  
+       line =(garage.getGarageName()
+              + ",  " + hours + " hours parked, "
+              + currencyFormat.format(fee) + " fee.");
+         receiptOutputStrategy.writeReceipt(line);
     }
 
     private void printGarageTotals() {

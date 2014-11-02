@@ -18,12 +18,15 @@ public class ATM {
     private Car car;
     private Receipt receipt;
     private FeeStrategy feeStrategy;
+    private ReceiptOutputStrategy receiptOutputStrategy;
 
-    public ATM(Garage garage, FeeStrategy feeStrategy) {
-        this.receipt = new Receipt(feeStrategy, garage);
+    public ATM(Garage garage, FeeStrategy feeStrategy,
+               ReceiptOutputStrategy receiptOutputStrategy) {
+        this.receipt = new Receipt(feeStrategy, garage, receiptOutputStrategy);
 
         this.garage = garage;
         this.feeStrategy = feeStrategy;
+        this.receiptOutputStrategy = receiptOutputStrategy;
     }
 
     public final void carLeaves(Car car) {
