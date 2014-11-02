@@ -13,9 +13,9 @@ public class ThriftyFeeCalculator implements FeeStrategy {
     private double minFee = 1.50;
     private double minHours = 2.0;
     private double hourlyFee = 0.75;
-    private double maxMinHours = 8;     //minimum hours maximum
-    private double maxFeeAmount = 5000; //can't charge over 5000
-    private double maxHourlyFee = 500;  //can't charge over 500 hr
+    private final double maxMinHours = 8;     //minimum hours maximum
+    private final double maxFeeAmount = 5000; //can't charge over 5000
+    private final double maxHourlyFee = 500;  //can't charge over 500 hr
     private final int ONE_HOUR = 1;
 
     /**

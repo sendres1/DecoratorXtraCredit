@@ -12,6 +12,7 @@ package sje.parkinggarageapp;
  */
 public class Ticket {
        private double hours;
+       private final int MAX_HOURS_IN_DAY = 24;
 
     public Ticket(double hours) {
         this.hours = hours;
@@ -22,7 +23,7 @@ public class Ticket {
     }
 
     public final void setHours(double hours) {
-         if (hours < 0 || hours > 24) {
+         if (hours < 0 || hours > MAX_HOURS_IN_DAY) {
             throw new IllegalArgumentException("Hours can't be more than 24.");
         }
         this.hours = hours;

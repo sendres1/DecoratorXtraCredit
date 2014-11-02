@@ -17,9 +17,9 @@ public class BestValueFeeCalculator implements FeeStrategy {
     private double maxFee = 10.00;
     private double maxHours = 24;
     private double hourlyFee = 0.50;
-    private double maxMinHours = 8;     //minimum hours maximum
-    private double maxFeeAmount = 5000; //can't charge over 5000
-    private double maxHourlyFee = 500;  //can't charge over 500 hr
+    private final double maxMinHours = 8;     //minimum hours maximum
+    private final double maxFeeAmount = 5000; //can't charge over 5000
+    private final double maxHourlyFee = 500;  //can't charge over 500 hr
     private final int ONE_HOUR = 1;
     private final int MAX_HOURS_IN_DAY = 24;
 
@@ -31,7 +31,7 @@ public class BestValueFeeCalculator implements FeeStrategy {
      * @param minHours - hours for the minimum charged
      * @param maxFee - maximum fee charged
      * @param maxHours - maximum fee charged for any hours over max
-     * @parm hourlyFee - hourly fee charged between min and max charge
+     * @parmam hourlyFee - hourly fee charged between min and max charge
      */
     public BestValueFeeCalculator(double minFee,
             double minHours, double maxFee,
