@@ -10,7 +10,7 @@ package sje.parkinggarageapp;
 public class GuiReceiptOutput implements ReceiptOutputStrategy {
 
     @Override
-    public String writeReceipt(String line) {
+    public void writeReceipt(String line) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

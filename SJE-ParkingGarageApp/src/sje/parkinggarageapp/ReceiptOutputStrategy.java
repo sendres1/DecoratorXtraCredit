@@ -11,5 +11,5 @@ package sje.parkinggarageapp;
  * @author Owner
  */
 public interface ReceiptOutputStrategy {
-   public abstract String writeReceipt(String line);  
+   public abstract void writeReceipt(String line);  
 }

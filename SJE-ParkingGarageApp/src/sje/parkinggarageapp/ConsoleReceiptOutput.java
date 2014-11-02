@@ -8,10 +8,34 @@ package sje.parkinggarageapp;
 
 
 public class ConsoleReceiptOutput implements ReceiptOutputStrategy {
+    private String line;    
 
-    @Override
-    public String writeReceipt(String line) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ConsoleReceiptOutput(String line) {
+        setLine(line);
+    }
+
+    public final void setLine(String line) {
+        if (line == null || line.isEmpty())
+        {
+            throw new IllegalArgumentException("Line is invalid.");
+        }
+        this.line = line;
     }
     
+    
+    @Override
+    public void writeReceipt(String line) {
+        if (line == null || line.isEmpty())
+        {
+            throw new IllegalArgumentException("Line is invalid.");
+        }
+         System.out.println(line);
+      
+    }
+    
+    
 }
+    
+
+
+   

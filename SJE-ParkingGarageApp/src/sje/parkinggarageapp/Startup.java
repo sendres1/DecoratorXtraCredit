@@ -17,7 +17,8 @@ public class Startup {
         Garage bestGarage = new Garage("Best Value Parking Garage",
                 "Plankinton Street", "Milwaukee Wi", "53111");
         FeeStrategy bestStrategy = new BestValueFeeCalculator(2, 3, 10, 24, .50);
-
+        ReceiptOutputStrategy consoleReciept = new ConsoleReceiptOutput();
+        
         ATM atmOut = new ATM(bestGarage, bestStrategy);
 
         Car car1 = new Car();

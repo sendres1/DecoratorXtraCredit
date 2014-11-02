@@ -58,9 +58,14 @@ public class Receipt {
     }
 
     private void printSale() {
-        System.out.println(garage.getGarageName()
+        String line;
+//        System.out.println(garage.getGarageName()
+//                + ",  " + hours + " hours parked, "
+//                + currencyFormat.format(fee) + " fee.");
+         line =(garage.getGarageName()
                 + ",  " + hours + " hours parked, "
                 + currencyFormat.format(fee) + " fee.");
+         writeReceipt(line);
     }
 
     private void printGarageTotals() {
