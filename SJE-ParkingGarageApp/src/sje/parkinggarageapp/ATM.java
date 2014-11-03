@@ -23,13 +23,28 @@ public class ATM {
     public ATM(Garage garage, FeeStrategy feeStrategy,
                ReceiptOutputStrategy receiptOutputStrategy) {
         this.receipt = new Receipt(feeStrategy, garage, receiptOutputStrategy);
-
+        if (garage == null)
+             {
+            throw new IllegalArgumentException("Garage is null.");
+        }
         this.garage = garage;
+        if (feeStrategy == null)
+             {
+            throw new IllegalArgumentException("feeStrategy is null.");
+        }
         this.feeStrategy = feeStrategy;
+        if (receiptOutputStrategy == null)
+             {
+            throw new IllegalArgumentException("receiptOutputStrategy is null.");
+        }
         this.receiptOutputStrategy = receiptOutputStrategy;
     }
 
     public final void carLeaves(Car car) {
+        if (car == null)
+             {
+            throw new IllegalArgumentException("Car is null.");
+        }
         receipt.processCar(car);
         //receipt.addSale(hours);
 

@@ -18,6 +18,10 @@ public class Car {
     }
 
     public final void carArrives(double hours) {
+       if (hours < 0)
+             {
+            throw new IllegalArgumentException("hours is < 0.");
+        }
         this.ticket = new Ticket(hours);
     }
 
