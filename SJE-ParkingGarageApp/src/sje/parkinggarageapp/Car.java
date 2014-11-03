@@ -17,7 +17,7 @@ public class Car {
 
     }
 
-    public final void carArrives(double hours) {
+    public final void checkinCar(double hours) {
        if (hours < 0)
              {
             throw new IllegalArgumentException("hours is < 0.");

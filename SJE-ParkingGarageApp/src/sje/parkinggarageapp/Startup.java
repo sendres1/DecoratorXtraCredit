@@ -22,23 +22,23 @@ public class Startup {
         ATM atmOut = new ATM(bestGarage, bestStrategy, consoleReceipt);
 
         Car car1 = new Car();
-        car1.carArrives(.5);
-        atmOut.carLeaves(car1);
+        car1.checkinCar(.5);
+        atmOut.checkoutCar(car1);
         Car car2 = new Car();
-        car2.carArrives(2.00);
-        atmOut.carLeaves(car2);
+        car2.checkinCar(2.00);
+        atmOut.checkoutCar(car2);
         Car car3 = new Car();
-        car3.carArrives(3.00);
-        atmOut.carLeaves(car3);
+        car3.checkinCar(3.00);
+        atmOut.checkoutCar(car3);
         Car car4 = new Car();
-        car4.carArrives(4.50);
-        atmOut.carLeaves(car4);
+        car4.checkinCar(4.50);
+        atmOut.checkoutCar(car4);
         Car car5 = new Car();
-        car5.carArrives(19.00);
-        atmOut.carLeaves(car5);
+        car5.checkinCar(19.00);
+        atmOut.checkoutCar(car5);
         Car car6 = new Car();
-        car6.carArrives(19.75);
-        atmOut.carLeaves(car6);
+        car6.checkinCar(19.75);
+        atmOut.checkoutCar(car6);
 
         Garage thriftyGarage = new Garage("Thrifty",
                 "Main Street", "Milwaukee Wi", "53112");
@@ -48,23 +48,23 @@ ReceiptOutputStrategy guiReceipt = new GuiReceiptOutput(thriftyGarage.getGarageN
         ATM atmOut2 = new ATM(thriftyGarage, thriftyStrategy, guiReceipt);
 
         Car car1t = new Car();
-        car1t.carArrives(.5);
-        atmOut2.carLeaves(car1t);
+        car1t.checkinCar(.5);
+        atmOut2.checkoutCar(car1t);
         Car car2t = new Car();
-        car2t.carArrives(2.00);
-        atmOut2.carLeaves(car2t);
+        car2t.checkinCar(2.00);
+        atmOut2.checkoutCar(car2t);
         Car car3t = new Car();
-        car3t.carArrives(3.00);
-        atmOut2.carLeaves(car3t);
+        car3t.checkinCar(3.00);
+        atmOut2.checkoutCar(car3t);
         Car car4t = new Car();
-        car4t.carArrives(4.50);
-        atmOut2.carLeaves(car4t);
+        car4t.checkinCar(4.50);
+        atmOut2.checkoutCar(car4t);
         Car car5t = new Car();
-        car5t.carArrives(19.00);
-        atmOut2.carLeaves(car5t);
+        car5t.checkinCar(19.00);
+        atmOut2.checkoutCar(car5t);
         Car car6t = new Car();
-        car6t.carArrives(19.75);
-        atmOut2.carLeaves(car6t);
+        car6t.checkinCar(19.75);
+        atmOut2.checkoutCar(car6t);
 
     }
 

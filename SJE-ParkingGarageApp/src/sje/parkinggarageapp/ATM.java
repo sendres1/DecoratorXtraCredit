@@ -40,7 +40,7 @@ public class ATM {
         this.receiptOutputStrategy = receiptOutputStrategy;
     }
 
-    public final void carLeaves(Car car) {
+    public final void checkoutCar(Car car) {
         if (car == null)
              {
             throw new IllegalArgumentException("Car is null.");
