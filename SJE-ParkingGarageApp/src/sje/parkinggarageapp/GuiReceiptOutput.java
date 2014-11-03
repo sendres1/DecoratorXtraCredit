@@ -6,21 +6,34 @@
 
 package sje.parkinggarageapp;
 
+import javax.swing.JOptionPane;
+
 
 public class GuiReceiptOutput implements ReceiptOutputStrategy {
      String line;
 
     public GuiReceiptOutput(String line) {
-        this.line = line;
+        setLine(line);
     }
      
-     
-     
+   
+    public final void setLine(String line) {
+        if (line == null || line.isEmpty())
+        {
+            throw new IllegalArgumentException("Line is invalid.");
+        }
+        this.line = line;
+    }
     
     
     @Override
     public void writeReceipt(String line) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (line == null || line.isEmpty())
+        {
+            throw new IllegalArgumentException("Line is invalid.");
+        }
+        JOptionPane.showMessageDialog(null, line);
+         
     }
     
 }

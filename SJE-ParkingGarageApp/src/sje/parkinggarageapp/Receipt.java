@@ -62,9 +62,9 @@ public class Receipt {
 
     private void printSale() {
         String line;
-        System.out.println(garage.getGarageName()
-                + ",  " + hours + " hours parked, "
-                + currencyFormat.format(fee) + " fee.");
+//        System.out.println(garage.getGarageName()
+//                + ",  " + hours + " hours parked, "
+//                + currencyFormat.format(fee) + " fee.");
   
        line =(garage.getGarageName()
               + ",  " + hours + " hours parked, "
@@ -73,11 +73,12 @@ public class Receipt {
     }
 
     private void printGarageTotals() {
-        System.out.println("Running total for: "
+        String line;
+       line = ("Running total for: "
                 + garage.getGarageName()
                 + " is  " + (decimalFormat.format(totalHours)) + " hours parked, "
                 + currencyFormat.format(totalFee) + " collected.");
-        System.out.println();
+        receiptOutputStrategy.writeReceipt(line);
 
     }
 
