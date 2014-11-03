@@ -17,11 +17,11 @@ public class Car {
 
     }
 
-    public void carArrives(double hours) {
+    public final void carArrives(double hours) {
         this.ticket = new Ticket(hours);
     }
 
-    public Ticket getTicket() {
+    public final Ticket getTicket() {
         return ticket;
     }
 

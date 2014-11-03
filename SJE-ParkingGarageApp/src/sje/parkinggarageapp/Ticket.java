@@ -15,7 +15,7 @@ public class Ticket {
     private final int MAX_HOURS_IN_DAY = 24;
 
     public Ticket(double hours) {
-        this.hours = hours;
+        setHours(hours);
     }
 
     public final double getHours() {

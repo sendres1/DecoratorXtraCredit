@@ -24,7 +24,7 @@ public class ConsoleReceiptOutput implements ReceiptOutputStrategy {
     
     
     @Override
-    public void writeReceipt(String line) {
+    public final void writeReceipt(String line) {
         if (line == null || line.isEmpty())
         {
             throw new IllegalArgumentException("Line is invalid.");

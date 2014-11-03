@@ -16,6 +16,7 @@ public class ThriftyFeeCalculator implements FeeStrategy {
     private final double maxMinHours = 8;     //minimum hours maximum
     private final double maxFeeAmount = 5000; //can't charge over 5000
     private final double maxHourlyFee = 500;  //can't charge over 500 hr
+    private final int MAX_HOURS_IN_DAY = 24;
     private final int ONE_HOUR = 1;
 
     /**
@@ -99,7 +100,10 @@ public class ThriftyFeeCalculator implements FeeStrategy {
      */
     @Override
     //public double calcFeeAmt(LineItem item) {
-    public double calcFeeAmt(double hours) {
+    public final double calcFeeAmt(double hours) {
+        if (hours < 0 || hours > MAX_HOURS_IN_DAY) {
+            throw new IllegalArgumentException("Hours can't go over 1 day.");
+        }
         double feeAmt;
         int hoursCharged;
         hoursCharged = (int) hours;
