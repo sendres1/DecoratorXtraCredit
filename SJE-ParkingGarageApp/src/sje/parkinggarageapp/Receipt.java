@@ -19,7 +19,8 @@ public class Receipt {
     private double totalHours;
     private double totalFee;
     private double hours;
-    private final Garage garage;
+    //private final Garage garage;
+    private final String garageName;
     private final FeeStrategy strategy;
     private final ReceiptOutputStrategy receiptOutputStrategy;
     private double fee;
@@ -27,25 +28,23 @@ public class Receipt {
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
     DecimalFormat decimalFormat = new DecimalFormat("####0.00");
 
-    public Receipt(FeeStrategy strategy, Garage garage,
-            ReceiptOutputStrategy receiptOutputStrategy) {
+    public Receipt(String garageName, FeeStrategy feeStrat, ReceiptOutputStrategy receiptOutputStrategy) {
         totalHours = 0;
         totalFee = 0;
-         if (garage == null)
-             {
-            throw new IllegalArgumentException("Garage is null.");
-        }
-        this.garage = garage;
-        if (strategy == null)
-             {
-            throw new IllegalArgumentException("Fee strategy is null.");
-        }
-        this.strategy = strategy;
-        if (receiptOutputStrategy == null)
-             {
-            throw new IllegalArgumentException("ReceiptOutputStrategy is null.");
-        }
+        //this.garage = garage;
+//        if (strategy == null)
+//             {
+//            throw new IllegalArgumentException("Fee strategy is null.");
+//        }
+//        this.strategy = strategy;
+//        if (receiptOutputStrategy == null)
+//             {
+//            throw new IllegalArgumentException("ReceiptOutputStrategy is null.");
+//        }
+//        this.receiptOutputStrategy = receiptOutputStrategy;
+        this.garageName = garageName;
         this.receiptOutputStrategy = receiptOutputStrategy;
+        strategy = feeStrat;
     }
 
     public final void processCar(Car car) {
@@ -75,10 +74,11 @@ public class Receipt {
         printGarageTotals();
 
     }
+   
 
     private void printSale() {
         String line;
-        line = (garage.getGarageName()
+        line = (garageName
                 + ",  " + hours + " hours parked, "
                 + currencyFormat.format(fee) + " fee.");
         receiptOutputStrategy.writeReceipt(line);
@@ -87,7 +87,7 @@ public class Receipt {
     private void printGarageTotals() {
         String line;
         line = ("Running total for: "
-                + garage.getGarageName()
+                + garageName
                 + " is  " + (decimalFormat.format(totalHours)) + " hours parked, "
                 + currencyFormat.format(totalFee) + " collected.");
         receiptOutputStrategy.writeReceipt(line);

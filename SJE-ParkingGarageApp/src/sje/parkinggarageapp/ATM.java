@@ -14,30 +14,32 @@ package sje.parkinggarageapp;
  */
 public class ATM {
 
-    private Garage garage;
-    private Car car;
-    private Receipt receipt;
+    private String garageName;
+   
+  //  private Receipt receipt;
     private FeeStrategy feeStrategy;
     private ReceiptOutputStrategy receiptOutputStrategy;
 
-    public ATM(Garage garage, FeeStrategy feeStrategy,
-               ReceiptOutputStrategy receiptOutputStrategy) {
-        this.receipt = new Receipt(feeStrategy, garage, receiptOutputStrategy);
-        if (garage == null)
-             {
-            throw new IllegalArgumentException("Garage is null.");
-        }
-        this.garage = garage;
-        if (feeStrategy == null)
-             {
-            throw new IllegalArgumentException("feeStrategy is null.");
-        }
-        this.feeStrategy = feeStrategy;
-        if (receiptOutputStrategy == null)
-             {
-            throw new IllegalArgumentException("receiptOutputStrategy is null.");
-        }
-        this.receiptOutputStrategy = receiptOutputStrategy;
+ //   public ATM(Garage garage, FeeStrategy feeStrategy,
+     public ATM(Garage garage){
+     feeStrategy = garage.getFeeStrategy();
+     receiptOutputStrategy = garage.getReceiptOutputStrategy();
+     //   this.receipt = new Receipt(feeStrategy, receiptOutputStrategy);
+     //   if (garage == null)
+     //        {
+     //       throw new IllegalArgumentException("Garage is null.");
+     //   }
+     //   this.garage = garage;
+//        if (feeStrategy == null)
+//             {
+//            throw new IllegalArgumentException("feeStrategy is null.");
+//        }
+//        this.feeStrategy = feeStrategy;
+//        if (receiptOutputStrategy == null)
+//             {
+//            throw new IllegalArgumentException("receiptOutputStrategy is null.");
+//        }
+//        this.receiptOutputStrategy = receiptOutputStrategy;
     }
 
     public final void checkoutCar(Car car) {
@@ -45,6 +47,7 @@ public class ATM {
              {
             throw new IllegalArgumentException("Car is null.");
         }
+        Receipt receipt = new Receipt(garageName, feeStrategy, receiptOutputStrategy);
         receipt.processCar(car);
         //receipt.addSale(hours);
 

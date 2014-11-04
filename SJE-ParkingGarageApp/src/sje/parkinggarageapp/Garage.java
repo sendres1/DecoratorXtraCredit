@@ -12,13 +12,22 @@ public class Garage {
     private String address1;
     private String cityState;
     private String zipcode;
+    private Car car;
+    private ATM atm;
+ //   private Receipt receipt;
+    private FeeStrategy feeStrategy;
+    private ReceiptOutputStrategy receiptOutputStrategy;
 
     // constructor
-    public Garage(String garageName, String address1, String cityState, String zipcode) {
+    public Garage(String garageName, String address1, String cityState, String zipcode,FeeStrategy feeStrat
+            ) {
         setGarageName(garageName);
         setAddress1(address1);
         setCityState(cityState);
         setZipcode(zipcode);
+        this.feeStrategy = feeStrat;
+        //this.atm = new ATM(garageName, feeStrat, receiptOutputStrategy);
+        //this.receiptOutputStrategy = receiptStrategy;
     }
 
     //getters
@@ -37,6 +46,17 @@ public class Garage {
     public final String getZipcode() {
         return zipcode;
     }
+
+    public FeeStrategy getFeeStrategy() {
+        return feeStrategy;
+    }
+
+    public ReceiptOutputStrategy getReceiptOutputStrategy() {
+        return receiptOutputStrategy;
+    }
+    
+    
+    
 
     //setters
     public final void setGarageName(String garageName) {
@@ -67,4 +87,11 @@ public class Garage {
         this.zipcode = zipcode;
     }
 
+    public void setReceiptOutputStrategy(ReceiptOutputStrategy receiptOutputStrategy) {
+        this.receiptOutputStrategy = receiptOutputStrategy;
+    }
+
+    
+
+    
 }

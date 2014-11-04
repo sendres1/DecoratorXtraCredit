@@ -13,13 +13,20 @@ public class Startup {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        String mgs = "";
 
-        Garage bestGarage = new Garage("Best Value Parking Garage",
-                "Plankinton Street", "Milwaukee Wi", "53111");
         FeeStrategy bestStrategy = new BestValueFeeCalculator(2, 3, 10, 24, .50);
-        ReceiptOutputStrategy consoleReceipt = new ConsoleReceiptOutput(bestGarage.getGarageName());
+         Garage bestGarage = new Garage("Best Value Parking Garage",
+                "Plankinton Street", "Milwaukee Wi", "53111", bestStrategy);
+         
+        ReceiptOutputStrategy consoleReceipt = new ConsoleReceiptOutput(bestGarage.getGarageName());  
         
-        ATM atmOut = new ATM(bestGarage, bestStrategy, consoleReceipt);
+        bestGarage.setReceiptOutputStrategy(consoleReceipt);
+    //    Garage bestGarage = new Garage("Best Value Parking Garage",
+    //            "Plankinton Street", "Milwaukee Wi", "53111", bestStrategy, consoleReceipt);
+        
+
+        ATM atmOut = new ATM(bestGarage);
 
         Car car1 = new Car();
         car1.checkinCar(.5);
@@ -40,12 +47,14 @@ public class Startup {
         car6.checkinCar(19.75);
         atmOut.checkoutCar(car6);
 
-        Garage thriftyGarage = new Garage("Thrifty",
-                "Main Street", "Milwaukee Wi", "53112");
+        
 
         FeeStrategy thriftyStrategy = new ThriftyFeeCalculator(1.5, 2.0, .75);
-ReceiptOutputStrategy guiReceipt = new GuiReceiptOutput(thriftyGarage.getGarageName());
-        ATM atmOut2 = new ATM(thriftyGarage, thriftyStrategy, guiReceipt);
+        Garage thriftyGarage = new Garage("Thrifty",
+                "Main Street", "Milwaukee Wi", "53112", thriftyStrategy);
+        ReceiptOutputStrategy guiReceipt = new GuiReceiptOutput(thriftyGarage.getGarageName());
+        thriftyGarage.setReceiptOutputStrategy(guiReceipt);
+        ATM atmOut2 = new ATM(thriftyGarage);
 
         Car car1t = new Car();
         car1t.checkinCar(.5);
