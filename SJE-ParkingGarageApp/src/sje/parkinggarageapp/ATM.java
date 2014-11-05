@@ -26,6 +26,9 @@ public class ATM {
             throw new IllegalArgumentException("Garage is null.");
         }
 
+        
+        feeStrategy = garage.getFeeStrategy();
+        receiptOutputStrategy = garage.getReceiptOutputStrategy();
         if (feeStrategy == null) {
             throw new IllegalArgumentException("feeStrategy is null.");
         }
@@ -34,8 +37,6 @@ public class ATM {
             throw new IllegalArgumentException("receiptOutputStrategy is null.");
         }
         
-        feeStrategy = garage.getFeeStrategy();
-        receiptOutputStrategy = garage.getReceiptOutputStrategy();
         garageName = garage.getGarageName();
         totalHours = 0;
         totalFee = 0;
