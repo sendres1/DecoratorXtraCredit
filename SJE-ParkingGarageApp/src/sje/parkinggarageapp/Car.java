@@ -12,16 +12,21 @@ package sje.parkinggarageapp;
 public class Car {
 
     private Ticket ticket;
+    private double hours;
 
     public Car() {
 
-    }
+  }
 
-    public final void checkinCar(double hours) {
-       if (hours < 0)
-             {
+//    public Car(double hours) {
+        
+
+    public final void getTicket(double hours) {
+     
+        if (hours < 0) {
             throw new IllegalArgumentException("hours is < 0.");
         }
+        this.hours = hours;
         this.ticket = new Ticket(hours);
     }
 

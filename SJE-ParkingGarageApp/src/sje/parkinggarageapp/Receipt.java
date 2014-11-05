@@ -19,18 +19,23 @@ public class Receipt {
     private double totalHours;
     private double totalFee;
     private double hours;
-    //private final Garage garage;
+ //   private final Garage garage;
     private final String garageName;
     private final FeeStrategy strategy;
     private final ReceiptOutputStrategy receiptOutputStrategy;
     private double fee;
+   // private final ATM atm;
 
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
     DecimalFormat decimalFormat = new DecimalFormat("####0.00");
 
-    public Receipt(String garageName, FeeStrategy feeStrat, ReceiptOutputStrategy receiptOutputStrategy) {
-        totalHours = 0;
-        totalFee = 0;
+    public Receipt(String garageName, FeeStrategy feeStrat, 
+            ReceiptOutputStrategy receiptOutputStrategy,
+            double totalHours, double totalFee)
+    {
+           
+        this.totalHours = totalHours;
+        this.totalFee = totalFee;
         //this.garage = garage;
 //        if (strategy == null)
 //             {
@@ -45,11 +50,20 @@ public class Receipt {
         this.garageName = garageName;
         this.receiptOutputStrategy = receiptOutputStrategy;
         strategy = feeStrat;
+    
     }
 
+//    public Receipt(String garageName, FeeStrategy strategy, 
+//            ReceiptOutputStrategy receiptOutputStrategy, ATM atm) {
+//        this.garageName = garageName;
+//        this.strategy = strategy;
+//        this.receiptOutputStrategy = receiptOutputStrategy;
+//        this.atm = atm;
+//    }
+//    
+
     public final void processCar(Car car) {
-         if (car == null)
-        {
+        if (car == null) {
             throw new IllegalArgumentException("Car is null.");
         }
         this.hours = car.getTicket().getHours();
@@ -58,9 +72,11 @@ public class Receipt {
 
     public final void addSale() {
         totalHours += hours;
+        //atm.setTotalHours(hours);
         //  this.hours = hours;
         fee = getFeeAmt(hours);
         totalFee += fee;
+        //atm.setTotalFee(totalFee);
         printReceipt();
     }
 
@@ -74,7 +90,6 @@ public class Receipt {
         printGarageTotals();
 
     }
-   
 
     private void printSale() {
         String line;
@@ -92,6 +107,17 @@ public class Receipt {
                 + currencyFormat.format(totalFee) + " collected.");
         receiptOutputStrategy.writeReceipt(line);
 
+        
+        
+        
+    }
+
+    public double getTotalHours() {
+        return totalHours;
+    }
+
+    public double getTotalFee() {
+        return totalFee;
     }
 
 }
