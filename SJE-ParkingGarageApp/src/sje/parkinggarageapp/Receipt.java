@@ -19,49 +19,70 @@ public class Receipt {
     private double totalHours;
     private double totalFee;
     private double hours;
- //   private final Garage garage;
     private final String garageName;
     private final FeeStrategy strategy;
     private final ReceiptOutputStrategy receiptOutputStrategy;
     private double fee;
-   // private final ATM atm;
+   
 
     NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
     DecimalFormat decimalFormat = new DecimalFormat("####0.00");
 
     public Receipt(String garageName, FeeStrategy feeStrat, 
             ReceiptOutputStrategy receiptOutputStrategy,
-            double totalHours, double totalFee)
-    {
-           
-        this.totalHours = totalHours;
-        this.totalFee = totalFee;
-        //this.garage = garage;
-//        if (strategy == null)
-//             {
-//            throw new IllegalArgumentException("Fee strategy is null.");
-//        }
-//        this.strategy = strategy;
-//        if (receiptOutputStrategy == null)
-//             {
-//            throw new IllegalArgumentException("ReceiptOutputStrategy is null.");
-//        }
-//        this.receiptOutputStrategy = receiptOutputStrategy;
-        this.garageName = garageName;
-        this.receiptOutputStrategy = receiptOutputStrategy;
-        strategy = feeStrat;
+            double totalHours, double totalFee){
     
+        setTotalHours(totalHours);
+        setTotalFee(totalFee);
+   
+        if (feeStrat == null)
+             {
+            throw new IllegalArgumentException("Fee strategy is null.");
+        }
+        this.strategy = feeStrat;
+        if (receiptOutputStrategy == null)
+             {
+            throw new IllegalArgumentException("ReceiptOutputStrategy is null.");
+        }
+        this.receiptOutputStrategy = receiptOutputStrategy;
+       
+        if (garageName == null || garageName.isEmpty())
+             {
+            throw new IllegalArgumentException("ReceiptOutputStrategy is null.");
+        }
+        this.garageName = garageName;
+          
     }
 
-//    public Receipt(String garageName, FeeStrategy strategy, 
-//            ReceiptOutputStrategy receiptOutputStrategy, ATM atm) {
-//        this.garageName = garageName;
-//        this.strategy = strategy;
-//        this.receiptOutputStrategy = receiptOutputStrategy;
-//        this.atm = atm;
-//    }
-//    
+    // setters
+    public final void setTotalHours(double totalHours) {
+        if (totalHours < 0) {
+            throw new IllegalArgumentException("total Hours invalid.");
+        }
+        this.totalHours = totalHours;
+    }
 
+    public final void setTotalFee(double totalFee) {
+        if (totalFee < 0) {
+            throw new IllegalArgumentException("total fee invalid.");
+        }
+        this.totalFee = totalFee;
+    }
+
+    public final void setHours(double hours) {
+        if (hours < 0) {
+            throw new IllegalArgumentException("hours invalid.");
+        }
+        this.hours = hours;
+    }
+
+    public final void setFee(double fee) {
+        if (fee < 0) {
+            throw new IllegalArgumentException("fee is invalid.");
+        }
+        this.fee = fee;
+    }
+    
     public final void processCar(Car car) {
         if (car == null) {
             throw new IllegalArgumentException("Car is null.");
@@ -70,25 +91,20 @@ public class Receipt {
         addSale();
     }
 
-    public final void addSale() {
+    private void addSale() {
         totalHours += hours;
-        //atm.setTotalHours(hours);
-        //  this.hours = hours;
         fee = getFeeAmt(hours);
         totalFee += fee;
-        //atm.setTotalFee(totalFee);
         printReceipt();
     }
 
     private double getFeeAmt(double hours) {
         return strategy.calcFeeAmt(hours);
-
     }
 
     private void printReceipt() {
         printSale();
         printGarageTotals();
-
     }
 
     private void printSale() {
@@ -106,17 +122,14 @@ public class Receipt {
                 + " is  " + (decimalFormat.format(totalHours)) + " hours parked, "
                 + currencyFormat.format(totalFee) + " collected.");
         receiptOutputStrategy.writeReceipt(line);
-
-        
-        
-        
+       
     }
 
-    public double getTotalHours() {
+    public final double getTotalHours() {
         return totalHours;
     }
 
-    public double getTotalFee() {
+    public final double getTotalFee() {
         return totalFee;
     }
 

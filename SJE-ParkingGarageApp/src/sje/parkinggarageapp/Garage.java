@@ -14,20 +14,18 @@ public class Garage {
     private String zipcode;
     private Car car;
     private ATM atm;
-    //   private Receipt receipt;
     private FeeStrategy feeStrategy;
     private ReceiptOutputStrategy receiptOutputStrategy;
 
     // constructor
-    public Garage(String garageName, String address1, String cityState, String zipcode, FeeStrategy feeStrat
-    ) {
+    public Garage(String garageName, String address1, String cityState, 
+            String zipcode, FeeStrategy feeStrat) {
         setGarageName(garageName);
         setAddress1(address1);
         setCityState(cityState);
         setZipcode(zipcode);
-        this.feeStrategy = feeStrat;
-        //this.atm = new ATM(garageName, feeStrat, receiptOutputStrategy);
-        //this.receiptOutputStrategy = receiptStrategy;
+        setFeeStrategy(feeStrat);
+
     }
 
     //getters
@@ -47,11 +45,11 @@ public class Garage {
         return zipcode;
     }
 
-    public FeeStrategy getFeeStrategy() {
+    public final FeeStrategy getFeeStrategy() {
         return feeStrategy;
     }
 
-    public ReceiptOutputStrategy getReceiptOutputStrategy() {
+    public final ReceiptOutputStrategy getReceiptOutputStrategy() {
         return receiptOutputStrategy;
     }
 
@@ -84,8 +82,19 @@ public class Garage {
         this.zipcode = zipcode;
     }
 
-    public void setReceiptOutputStrategy(ReceiptOutputStrategy receiptOutputStrategy) {
+    public final void setReceiptOutputStrategy(ReceiptOutputStrategy receiptOutputStrategy) {
+        if (receiptOutputStrategy == null) {
+            throw new IllegalArgumentException("receiptOutputStrategy is null!");
+        }
+
         this.receiptOutputStrategy = receiptOutputStrategy;
+    }
+
+    public final void setFeeStrategy(FeeStrategy feeStrategy) {
+        if (feeStrategy == null) {
+            throw new IllegalArgumentException("feStrategy is null!");
+        }
+        this.feeStrategy = feeStrategy;
     }
 
 }

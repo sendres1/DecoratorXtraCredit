@@ -7,7 +7,8 @@ package sje.parkinggarageapp;
 
 /**
  *
- * @author Owner
+ * @author Steven Endres
+ * @version 1.2
  */
 public class Ticket {
 

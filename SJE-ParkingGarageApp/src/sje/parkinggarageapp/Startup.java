@@ -25,7 +25,6 @@ public class Startup {
         ATM atmM = new ATM(bestGarage);
 
         Car car1 = new Car();
-    //    car1.checkinCar(.5);
         atmM.checkinCar(car1,.5);
         atmM.checkoutCar(car1);
         Car car2 = new Car();
