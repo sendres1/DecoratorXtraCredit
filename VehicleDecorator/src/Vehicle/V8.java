@@ -29,9 +29,5 @@ public class V8 extends VehicleDecorator {
         return 900.00 + vehicle.cost();
     }
 
-//    @Override
-//    public String getDescription() {
-//        return vehicle.description() + ", Stability Control:";
-//    }
 
 }
